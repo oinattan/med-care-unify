@@ -10,7 +10,7 @@ Existem várias maneiras de editar sua aplicação.
 ### 1. Usando a plataforma Lovable
 Basta visitar o Projeto Lovable e começar a fazer suas alterações por lá. As modificações feitas na plataforma serão automaticamente enviadas (comitadas) para este repositório.
 
-###2. Usando sua IDE de preferência (localmente)
+### 2. Usando sua IDE de preferência (localmente)
 Se você prefere trabalhar no seu ambiente local, pode clonar este repositório e enviar as mudanças (fazer um push). As alterações enviadas também serão refletidas na plataforma Lovable. O único requisito é ter o Node.js e o npm instalados — recomendamos a instalação via nvm.
 
 Siga estes passos:
