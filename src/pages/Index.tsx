@@ -1,19 +1,7 @@
-import { useState } from "react";
-import Dashboard from "@/components/Dashboard";
-import LoginPage from "@/components/LoginPage";
+import LandingPage from "@/components/LandingPage";
 
 const Index = () => {
-  const [user, setUser] = useState<{ role: "attendant" | "manager" } | null>(null);
-
-  const handleLogin = (role: "attendant" | "manager") => {
-    setUser({ role });
-  };
-
-  if (!user) {
-    return <LoginPage onLogin={handleLogin} />;
-  }
-
-  return <Dashboard userRole={user.role} onLogout={() => setUser(null)} />;
+  return <LandingPage />;
 };
 
 export default Index;
