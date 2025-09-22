@@ -104,10 +104,10 @@ const LandingPage = () => {
               <a href="#depoimentos" className="text-muted-foreground hover:text-primary transition-colors">
                 Depoimentos
               </a>
-              <Link to="/login">
+              <Link to="/auth">
                 <Button variant="outline">Fazer Login</Button>
               </Link>
-              <Link to="/login">
+              <Link to="/auth">
                 <Button>Começar Grátis</Button>
               </Link>
             </nav>
@@ -140,7 +140,7 @@ const LandingPage = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/login">
+                <Link to="/auth">
                   <Button size="lg" className="w-full sm:w-auto">
                     Começar Teste Grátis
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -347,7 +347,7 @@ const LandingPage = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/login">
+              <Link to="/auth">
                 <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                   Começar Teste Grátis de 14 Dias
                   <ArrowRight className="ml-2 w-4 h-4" />
