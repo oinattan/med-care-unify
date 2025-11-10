@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import QuickReplies from "@/components/QuickReplies";
+import { EmailChannelManager } from "@/components/EmailChannelManager";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -25,7 +26,8 @@ import {
   Search,
   Filter,
   MoreHorizontal,
-  Send
+  Send,
+  Settings
 } from "lucide-react";
 
 interface Conversation {
@@ -232,10 +234,16 @@ const Dashboard = () => {
 
       <div className="p-4 sm:p-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 sticky top-0 z-10">
+          <TabsList className={`grid w-full ${profile?.role === 'manager' || profile?.role === 'admin' ? 'grid-cols-4' : 'grid-cols-3'} sticky top-0 z-10`}>
             <TabsTrigger value="inbox">Caixa de Entrada</TabsTrigger>
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="reports">Relatórios</TabsTrigger>
+            {(profile?.role === 'manager' || profile?.role === 'admin') && (
+              <TabsTrigger value="smtp">
+                <Settings className="w-4 h-4 mr-2" />
+                Canais SMTP
+              </TabsTrigger>
+            )}
           </TabsList>
 
           {/* Inbox Tab */}
@@ -741,6 +749,13 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </TabsContent>
+
+          {/* SMTP Channels Tab */}
+          {(profile?.role === 'manager' || profile?.role === 'admin') && (
+            <TabsContent value="smtp" className="space-y-6">
+              <EmailChannelManager />
+            </TabsContent>
+          )}
         </Tabs>
       </div>
     </div>

@@ -111,6 +111,51 @@ export type Database = {
           },
         ]
       }
+      email_channels: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          email: string
+          id: string
+          is_active: boolean
+          name: string
+          smtp_host: string
+          smtp_password: string
+          smtp_port: number
+          smtp_username: string
+          updated_at: string
+          use_tls: boolean
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          email: string
+          id?: string
+          is_active?: boolean
+          name: string
+          smtp_host: string
+          smtp_password: string
+          smtp_port?: number
+          smtp_username: string
+          updated_at?: string
+          use_tls?: boolean
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          email?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          smtp_host?: string
+          smtp_password?: string
+          smtp_port?: number
+          smtp_username?: string
+          updated_at?: string
+          use_tls?: boolean
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
