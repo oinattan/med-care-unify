@@ -29,21 +29,26 @@ export const useAuth = () => {
         if (session?.user) {
           // Fetch user profile
           setTimeout(async () => {
-            try {
-              const { data: profileData, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('id', session.user.id)
-                .single();
+          try {
+            const { data: profileData, error } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', session.user.id)
+              .maybeSingle();
 
-              if (error && error.code !== 'PGRST116') {
-                throw error;
-              }
-
-              setProfile(profileData);
-            } catch (error) {
+            if (error) {
               console.error('Error fetching profile:', error);
+              toast({
+                title: "Erro ao carregar perfil",
+                description: "Não foi possível carregar suas informações.",
+                variant: "destructive"
+              });
             }
+
+            setProfile(profileData);
+          } catch (error) {
+            console.error('Error fetching profile:', error);
+          }
           }, 0);
         } else {
           setProfile(null);
@@ -66,10 +71,15 @@ export const useAuth = () => {
               .from('profiles')
               .select('*')
               .eq('id', session.user.id)
-              .single();
+              .maybeSingle();
 
-            if (error && error.code !== 'PGRST116') {
-              throw error;
+            if (error) {
+              console.error('Error fetching profile:', error);
+              toast({
+                title: "Erro ao carregar perfil",
+                description: "Não foi possível carregar suas informações.",
+                variant: "destructive"
+              });
             }
 
             setProfile(profileData);
