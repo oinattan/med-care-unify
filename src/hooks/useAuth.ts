@@ -96,7 +96,7 @@ export const useAuth = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, fullName: string) => {
+  const signUp = async (email: string, password: string, fullName: string, autoConfirm = false) => {
     try {
       const redirectUrl = `${window.location.origin}/`;
       
@@ -106,7 +106,8 @@ export const useAuth = () => {
         options: {
           emailRedirectTo: redirectUrl,
           data: {
-            full_name: fullName
+            full_name: fullName,
+            ...(autoConfirm && { email_confirmed: true })
           }
         }
       });
